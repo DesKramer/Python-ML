@@ -2,6 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+def plot_delta_error(error_data,delta_data):
+    plt.plot(error_data, 'b--')
+    plt.plot(delta_data, 'r--')
+    plt.ylabel('Value')
+    plt.show()
+
+
 # calc mean array value
 def mean_value(x):
     sum = 0
@@ -44,6 +51,7 @@ error_data = np.zeros(100)
 delta_data = np.zeros(100)
 
 count = 0
+
 for iter in range(10000):
     # forward propagation
     l0 = X
@@ -60,28 +68,22 @@ for iter in range(10000):
         error_data.put(count, (mean_value(l1_error) * 100))
         delta_data.put(count, (mean_value(l1_delta) * 100))
         count += 1
-        # print("Training Report | Error: ", mean_value(l1_error) * 100)
-        # print("Training Report | Delta: ", mean_value(l1_delta) * 100)
 
 
-# print(error_data)
-# print(delta_data)
-
-# plt.plot(error_data, 'b--')
-# plt.plot(delta_data, 'r--')
-# plt.ylabel('Value')
-# plt.show()
 
 print("Output after training")
 print(l1)
 
-
-
-
-
 # test input dataset dataset
 X1 = np.array([[1,0,1], [1,1,0], [0,1,1], [1,0,0]])
 prediction = nonlin(np.dot(X1, syn0))
-print("Test inputs \n", X1)
+print("\n\nTest inputs \n", X1)
 print("Prediction Based of training")
 print(prediction)
+
+
+
+
+
+# plot_delta_error(error_data,delta_data)
+
