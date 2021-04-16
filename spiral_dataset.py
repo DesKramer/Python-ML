@@ -1,4 +1,7 @@
-import matplotlib.pyplot as pyplot
+# Credit goes to the team behind CS231n at Standford University
+
+
+import matplotlib.pyplot as plt
 import numpy as np
 
 class Spiral:
@@ -7,15 +10,20 @@ class Spiral:
     # param k : number of classes
     # param
     def __init__(self, n, d, k):
-        self.X = np.zeros((n*k),d)
+        self.X = np.zeros((n*k,d))
         self.y = np.zeros((n*k), dtype='uint8')
         for i in range(k):
-            ix = range(N*j,N*(j+1))
-            r = np.linspace(0.0,1,N) # radius
-            t = np.linspace(j*4,(j+1)*4,N) + np.random.randn(N)*0.2 # theta
+            ix = range(n*i,n*(i+1))
+            r = np.linspace(0.0,1,n) # radius
+            t = np.linspace(i*4,(i+1)*4,n) + np.random.randn(n)*0.2 # theta
             self.X[ix] = np.c_[r*np.sin(t), r*np.cos(t)]
             self.y[ix] = i
 
     def visualize(self):
-        plt.scatter(self.X[:, 0], self.X[:, 1], c=y, s=40, cmap=plt.cm.Spectral)
+        plt.scatter(self.X[:, 0], self.X[:, 1], c=self.y, s=40)
         plt.show()
+
+
+if __name__ == "__main__":
+    ds = Spiral(100,2,5)
+    ds.visualize()
