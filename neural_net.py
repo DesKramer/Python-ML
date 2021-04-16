@@ -41,7 +41,7 @@ if __name__ == "__main__":
                   [1,0,1],
                   [1,1,1]])
     y = np.array([[0],[1],[1],[0]])
-    nn = NueralNet(X,y)
+    nn = NeuralNet(X,y)
 
     for i in range(5000):
         nn.forward_propagation()
